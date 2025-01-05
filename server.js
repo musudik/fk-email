@@ -12,6 +12,7 @@ const corsOptions = {
     ? [
         "https://iquiz-client.replit.app",
         "http://207.180.235.87:3003", 
+        "http://207.180.235.87:5173", 
         "http://localhost:3003",
         "http://localhost:5173",
       ]
