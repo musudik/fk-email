@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quiz Registration</title>
+    <style>
+    body {
+        font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+        line-height: 1.6;
+        color: #1d1c1d;
+        margin: 0;
+        padding: 0;
+    }
+    .container {
+        max-width: 600px;
+        margin: 0 auto;
+        padding: 40px 20px;
+    }
+    .logo {
+        margin-bottom: 32px;
+    }
+    .logo img {
+        height: 40px;
+        width: auto;
+    }
+    h1 {
+        font-size: 28px;
+        font-weight: 700;
+        margin-bottom: 24px;
+    }
+    .code-box {
+        background-color: #f8f9fa;
+        border-radius: 4px;
+        padding: 24px;
+        margin: 24px 0;
+        text-align: center;
+    }
+    .quiz-link {
+        display: inline-block;
+        background-color: #007a5a;
+        color: white;
+        text-decoration: none;
+        padding: 12px 24px;
+        border-radius: 4px;
+        margin: 16px 0;
+    }
+    .details {
+        background-color: #f8f9fa;
+        border-radius: 4px;
+        padding: 20px;
+        margin: 24px 0;
+    }
+    .social-links {
+        display: inline-block;
+        margin: 0 8px;
+    }
+    .social-icon {
+        display: inline-block;
+        margin: 0 8px;
+    }
+    .social-icon img {
+        width: 24px;
+        height: 24px;
+        vertical-align: middle;
+    }
+    .footer {
+        margin-top: 48px;
+        padding-top: 24px;
+        border-top: 1px solid #e1e1e1;
+        font-size: 14px;
+        color: #616061;
+        text-align: center;
+    }
+    .footer-links {
+        margin: 16px 0;
+    }
+    .footer-links a {
+        color: #616061;
+        text-decoration: none;
+        margin: 0 12px;
+    }
+    .footer-links a:hover {
+        color: #1264a3;
+        text-decoration: underline;
+    }
+    .company-info {
+        margin-top: 16px;
+        font-size: 12px;
+        color: #868686;
+    }
+    </style>
+</head>
+<body>
+    <div class="container">
+    <div class="logo">
+        <img src="<%= logoUrl %>" alt="1 Euro Quiz Logo" />
+    </div>
+    
+    <h1>Confirm your quiz registration</h1>
+    
+    <p>Dear <%= name %>,</p>
+    
+    <p>Thank you for registering for <strong><%= quizTitle %></strong>. Below are your quiz details:</p>
+    
+    <div class="details">
+        <p><strong>Quiz Details:</strong></p>
+        <ul>
+        <li>Date: <%= quizDate %></li>
+        <li>Entry Fee: €<%= fees %></li>
+        <%= paymentMethod %> === 'bank' ? `<li>Payment Status: <%= paymentStatus %></li>` : '' 
+        </ul>
+    </div>
+
+    <p>To join the quiz at the scheduled time, click the button below:</p>
+    
+    <div class="code-box">
+        <a href="<%= quizLink %>" class="quiz-link">Join Quiz</a>
+    </div>
+
+    <%= paymentMethod === 'bank' ? `
+    <div class="details">
+        <p><strong>Bank Transfer Details:</strong></p>
+        <p>Please complete your payment using the following bank details:</p>
+        <p>IBAN: <%= iban %></p>
+    </div>
+    ` : '' %>
+
+    <p>If you didn't request this registration, you can safely ignore this email.</p>
+
+    <div class="footer">
+        <div class="social-links">
+        <a href="https://facebook.com/oneeuroquiz" class="social-icon" target="_blank">
+            <img src="<%= SOCIAL_ICONS.facebook %>" alt="Facebook" style="width: 24px; height: 24px;" />
+        </a>
+        <a href="https://twitter.com/oneeuroquiz" class="social-icon" target="_blank">
+            <img src="<%= SOCIAL_ICONS.twitter %>" alt="Twitter" style="width: 24px; height: 24px;" />
+        </a>
+        <a href="https://instagram.com/oneeuroquiz" class="social-icon" target="_blank">
+            <img src="<%= SOCIAL_ICONS.instagram %>" alt="Instagram" style="width: 24px; height: 24px;" />
+        </a>
+        <a href="https://linkedin.com/company/oneeuroquiz" class="social-icon" target="_blank">
+            <img src="<%= SOCIAL_ICONS.linkedin %>" alt="LinkedIn" style="width: 24px; height: 24px;" />
+        </a>
+        </div>
+
+        <div class="footer-links">
+        <a href="https://oneeuroquiz.com/about">About Us</a>
+        <a href="https://oneeuroquiz.com/contact">Contact</a>
+        <a href="https://oneeuroquiz.com/privacy">Privacy Policy</a>
+        <a href="https://oneeuroquiz.com/terms">Terms of Service</a>
+        </div>
+
+        <div class="company-info">
+        <p>Need help? Contact our support team at support@oneeuroquiz.com</p>
+        <p>1 Euro Quiz | Making Learning Fun</p>
+        <p>© <%= new Date().getFullYear() %> One Euro Quiz. All rights reserved.</p>
+        </div>
+    </div>
+    </div>
+</body>
+</html>
